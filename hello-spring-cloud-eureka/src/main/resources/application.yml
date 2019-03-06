@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: hello-spring-cloud-eureka
+  boot:
+    admin:
+      client:
+        url: http://localhost:8084
+  zipkin:
+    base-url: http://localhost:9411
+# 上面表示根据程序名称来找服务
+
+server:
+  port: 8761
+
+# 设置eureka为服务端
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
